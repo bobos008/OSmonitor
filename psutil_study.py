@@ -46,7 +46,6 @@ disks_data = psutil.disk_partitions()
 print(disks_data)
 i = 0
 disk_count = len(disks_data)
-print("disk_count = ", disk_count)
 total_disk = 0
 used_disk = 0
 free_disk = 0
@@ -54,7 +53,8 @@ while True:
     if i >= disk_count:
         break
     print(disks_data[i])
-    disk_info = psutil.disk_usage(disks_data[i].device)
+    #disk_info = psutil.disk_usage(disks_data[i].device)
+    disk_info = psutil.disk_usage(disks_data[i].mountpoint)
     total_disk += float(disk_info.total)/1024/1024/1024
     used_disk += float(disk_info.used)/1024/1024/1024
     free_disk += float(disk_info.free)/1024/1024/1024
